@@ -1,0 +1,263 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at 70% 30%, #fff1fa 0%, #ffe0ec 40%, #e0e7ff 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.petalo {
+  position: absolute;
+  width: 22px;
+  height: 28px;
+  background: radial-gradient(ellipse at 60% 40%, #fff 40%, #ffb7e0 100%);
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 30;
+  animation: caerPetalo linear forwards;
+  /* Forma de pétalo de sakura */
+  clip-path: path('M11 0 C17 2, 22 10, 11 28 C0 10, 5 2, 11 0 Z');
+  /* Sombra suave */
+  box-shadow: 0 2px 8px 0 rgba(255, 183, 224, 0.511);
+}
+
+@keyframes caerPetalo {
+  0% {
+    transform: translateY(-40px) rotate(0deg) scale(1);
+    opacity: 0.8;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+.corazon {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  z-index: 40;
+  animation: desaparecerCorazon 1.5s linear forwards;
+  background: #ff69b4;
+  /* Forma de corazón con clip-path */
+  clip-path: path('M16 29s-13-8.35-13-17A7 7 0 0 1 16 5a7 7 0 0 1 13 7c0 8.65-13 17-13 17z');
+}
+
+@keyframes desaparecerCorazon {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+}
+
+.valentines-day {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  width: 400px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5; /* Debajo de pétalos/corazones (z-index: 30) y encima del fondo */
+}
+
+.envelope {
+  position: absolute;
+  filter: drop-shadow(0 0 25px rgba(0,0,0,.3));
+  width: 3;
+  height: 254px;
+  left: 53px;
+  top: 23px;
+}
+
+.envelope:before {
+  content:"";
+  position: absolute;
+  width:254px;
+  height:254px;
+  background-color: #ff9494;
+  transform: rotate(-45deg);
+  border-radius: 0 15px 0 0;
+  left:0;
+  top:0;
+}
+
+.envelope:after {
+  content:"";
+  position: absolute;
+  background-color: #ff9494;
+  width:360px;
+  height:225px;
+  left:-53px;
+  top:127px;
+}
+
+.heart {
+  position: absolute;
+  background-color: #e01911;
+  display: inline-block;
+  height: 180px;
+  top:70px;
+  left:90px;
+  transform: rotate(-45deg);
+  width:180px;
+  filter: drop-shadow(0 -10px 25px rgba(0,0,0,.3));
+  transition: .5s;
+  z-index: 2;
+}
+.heart:before, .heart:after {
+  content:"";
+  background-color: #e01911;
+  border-radius:50%;
+  height: 180px;
+  width: 180px;
+  position: absolute;
+}
+.heart:before {
+  top:-100px;
+  left:0;
+}
+.heart:after {
+  left:100px;
+  top:0;
+}
+
+.front {
+  position: absolute;
+  width:0;
+  height:0;
+  border-right: 190px solid #fbd2d2;
+  border-top: 113px solid transparent;
+  border-bottom: 113px solid transparent;
+  top:149px;
+  left:170px;
+  z-index:4;
+}
+.front:before {
+  content:"";
+  position: absolute;
+  width:0;
+  height:0;
+  border-left: 190px solid #fbd2d2;
+  border-top: 113px solid transparent;
+  border-bottom: 113px solid transparent;
+  top:-113px;
+  left:-170px;
+}
+.front:after {
+  width:0;
+  height:0;
+  position: absolute;
+  content:"";
+  border-bottom: 150px solid #fce7e9;
+  border-right:180px solid transparent;
+  border-left: 180px solid transparent;
+  top:-36px;
+  left:-170px;
+}
+
+.text {
+  position: absolute;
+  font-family: 'Sacramento', cursive;
+  letter-spacing:2px;
+  text-align: center;
+  color: white;
+  z-index:5;
+  top:90px;
+  left:60px;
+  font-size: 2em;
+  transition: .5s;
+  pointer-events: none;
+}
+
+.valentines-day:hover .heart {
+  transform: translateY(-50px) rotate(-45deg);
+}
+.valentines-day:hover .text {
+  transform: translateY(-50px);
+}
+
+#card {
+   height:500px;
+   width:800px;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%) scale(0.1);
+   display:flex;
+   visibility:hidden;
+   opacity: 0;
+   z-index: 10; /* Menor que pétalos y corazones */
+   box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+   border-radius: 18px;
+   background: #fff;
+   transition: opacity 1s, transform 1s;
+}
+#card.visible {
+   visibility: visible;
+   opacity: 1;
+   transform: translate(-50%, -50%) scale(1);
+}
+
+#petalos-container, #corazones-container {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 30;
+}
+
+.side {
+   background:#eee;
+   height:100%;
+   width:400px;
+   padding:10px;
+   border-radius: 18px 0 0 18px;
+   box-sizing: border-box;
+}
+.side.one {
+   width:320px;
+   transform:skew(10deg,20deg);
+   background:linear-gradient(90deg, #fff, #fff 40%, #ddd);
+   border-radius: 18px 0 0 18px;
+}
+.side.two {
+   transform:skew(10deg,-15deg);
+   background:linear-gradient(-90deg, #fff, #fff 40%, #f0f0f0);
+   border-radius: 0 18px 18px 0;
+   padding-left: 30px;
+   padding-right: 30px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+}
+
+#card h2 {
+   font-size:3em;
+   margin:0;
+   color:pink;
+   text-align: center;
+   font-family: 'Sacramento', cursive;
+}
+#card p {
+   font-size: 1.5em;
+   text-align: justify;
+   font-family: 'Sacramento', cursive;
+   margin: 0.5em 0;
+}

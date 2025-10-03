@@ -1,0 +1,6 @@
+<!-- filepath: d:\Users\Camila\OneDrive\Escritorio\cumpleanios-sorpresa\src\assets\sobre.svg -->
+<svg width="160" height="120" viewBox="0 0 160 120" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="30" width="140" height="80" rx="10" fill="#fff" stroke="#b48cff" stroke-width="4"/>
+  <polygon points="10,30 80,90 150,30" fill="#b2a4ff" stroke="#b48cff" stroke-width="4"/>
+  <polygon points="10,30 80,10 150,30" fill="#e0d7ff" stroke="#b48cff" stroke-width="4"/>
+</svg>

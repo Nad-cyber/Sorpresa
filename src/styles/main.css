@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  background: #0a0a23;
+  height: 100vh;
+  position: relative;
+}
+
+#canvas {
+  position: absolute;
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh;
+  z-index: 0;
+}
+
+.center-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 80px;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+button {
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 40px;
+  padding: 20px 70px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(79, 195, 247, 0.6);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.07);
+  box-shadow: 0 12px 30px rgba(0, 242, 254, 0.7);
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-25deg);
+}
+
+button:hover::before {
+  animation: shine 0.8s forwards;
+}
+
+@keyframes shine {
+  from {
+    left: -75%;
+  }
+  to {
+    left: 125%;
+  }
+}
